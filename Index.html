@@ -1,0 +1,850 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Africa Energy Indaba 2027</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Two fonts only: Archivo for titles and big numbers, Instrument Sans for everything else. Five text sizes, used everywhere. */
+:root{
+  --f-head:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --t-title:clamp(1.7rem,2.6vw + .6vh,2.5rem);
+  --t-lead:1.125rem;
+  --t-body:1rem;
+  --t-small:.875rem;
+  --t-label:.75rem;
+  --bg:#FBFBF8; --surface:#FFFFFF;
+  --ink:#0C1F3F; --ink2:#46536B; --ink3:#6B778D;
+  --line:#D9DDE4; --line2:#EEF0F3;
+  --gold:#F4BE41; --gold-soft:#FBEBBF; --gold-ink:#7A5500; --gold-text:#E9A90E; --on-gold:#0C1F3F;
+  --block:#0C1F3F; --on-block:#FFFFFF; --focus:#1F5FBF;
+  --c-energy:#E0A21A; --c-infra:#2F5D9E; --c-fin:#1E7F6B; --c-tech:#6B4FB0; --c-prof:#B85A36; --c-corp:#5A6A82; --on-c:#FFFFFF;
+  --gut:clamp(16px,3.4vw,56px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1730; --surface:#12264C;
+    --ink:#F1F3F8; --ink2:#B6BFD1; --ink3:#93A0B8;
+    --line:#2A3C62; --line2:#122246;
+    --gold:#F4BE41; --gold-soft:#3A3315; --gold-ink:#F4BE41; --gold-text:#F4BE41; --on-gold:#0C1F3F;
+    --block:#1D3D78; --on-block:#FFFFFF; --focus:#F4BE41;
+    --c-energy:#F4BE41; --c-infra:#78A6EE; --c-fin:#52C6A8; --c-tech:#A996F2; --c-prof:#EA906B; --c-corp:#98A8C2; --on-c:#0A1730;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1730; --surface:#12264C;
+  --ink:#F1F3F8; --ink2:#B6BFD1; --ink3:#93A0B8;
+  --line:#2A3C62; --line2:#122246;
+  --gold:#F4BE41; --gold-soft:#3A3315; --gold-ink:#F4BE41; --gold-text:#F4BE41; --on-gold:#0C1F3F;
+  --block:#1D3D78; --on-block:#FFFFFF; --focus:#F4BE41;
+  --c-energy:#F4BE41; --c-infra:#78A6EE; --c-fin:#52C6A8; --c-tech:#A996F2; --c-prof:#EA906B; --c-corp:#98A8C2; --on-c:#0A1730;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+html{font-size:clamp(14px,.3vw + .55vh + 7px,17px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.5 var(--f-body);display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+b,strong{font-weight:600}
+p{margin:0}
+mark{background:none;color:var(--gold-text);padding:0}
+
+/* top bar */
+.bar{position:relative;flex:none;height:52px;display:flex;align-items:center;gap:1rem;padding:0 var(--gut);border-bottom:1px solid var(--line);background:var(--bg);z-index:6}
+.brand{font:800 var(--t-body) var(--f-head);letter-spacing:.03em;white-space:nowrap}
+.brand i{color:var(--gold);font-style:normal}
+.now{flex:1;min-width:0;text-align:center;font-size:var(--t-small);color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ctl{display:flex;align-items:center;gap:.35rem;margin-left:auto}
+.btn{appearance:none;background:transparent;border:1px solid var(--line);height:32px;min-width:32px;padding:0 .7rem;display:inline-flex;align-items:center;justify-content:center;font-size:var(--t-small);font-weight:500;cursor:pointer;border-radius:3px;color:var(--ink)}
+.btn:hover:not(:disabled){border-color:var(--ink)}
+.btn:disabled{opacity:.35;cursor:default}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+#ctr{font-size:var(--t-small);color:var(--ink2);min-width:4.4em;text-align:center;white-space:nowrap}
+.prog{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--gold);transition:width .35s ease}
+
+/* slide frame */
+.deck{position:relative;flex:1;min-height:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow-x:hidden;overflow-y:auto;padding:clamp(6px,1.1vh,14px) var(--gut) clamp(6px,1vh,12px)}
+.slide.on{display:flex;animation:slidein .3s ease-out}
+@keyframes slidein{from{transform:translateX(14px);opacity:.6}to{transform:none;opacity:1}}
+.wrap{width:100%;max-width:1240px;margin:0 auto;flex:1 0 auto;display:flex;flex-direction:column;gap:clamp(8px,1.3vh,16px)}
+.main{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(8px,1.4vh,16px)}
+
+/* the five text styles */
+.lab{font-size:var(--t-label);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.lab b{color:var(--gold-ink);margin-right:.7em;font-weight:700}
+.title{font:800 var(--t-title)/1.08 var(--f-head);letter-spacing:-.015em;margin:.3rem 0 0;text-wrap:balance}
+.lead{font-size:var(--t-lead);line-height:1.4;color:var(--ink2);max-width:92ch;margin-top:.4rem}
+.small{font-size:var(--t-small);color:var(--ink2)}
+.note{font-size:var(--t-small);color:var(--ink3)}
+
+/* what this means for us */
+.volt{margin-top:auto;background:var(--block);color:var(--on-block);border-radius:4px;padding:.7rem 1.25rem;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.4rem 1.4rem;align-items:baseline}
+.volt .vl{font-size:var(--t-label);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.volt p{font-size:var(--t-body);line-height:1.45}
+.volt p+p{margin-top:.3rem}
+.volt b{color:var(--gold);font-weight:600}
+.foot{font-size:var(--t-label);color:var(--ink3)}
+
+/* shared parts */
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.chips li{font-size:var(--t-small);padding:.2rem .7rem;border:1px solid var(--line);border-radius:3px;background:var(--surface)}
+.pick{appearance:none;background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:.4rem .85rem;font-size:var(--t-small);font-weight:500;cursor:pointer;text-align:left}
+.pick:hover{border-color:var(--ink)}
+.pick[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.picks{display:flex;flex-wrap:wrap;gap:.4rem}
+.dl{display:grid;grid-template-columns:minmax(5.5rem,8rem) minmax(0,1fr);gap:.4rem 1rem;margin:0}
+.dl dt{font-size:var(--t-label);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding-top:.2rem}
+.dl dd{margin:0;font-size:var(--t-body)}
+.dl dd.q{font-weight:600}
+.dl dd.q::before{content:"“"}.dl dd.q::after{content:"”"}
+.card{border:1px solid var(--line);border-radius:4px;background:var(--surface);padding:1rem 1.15rem}
+.card h3{font:800 1.25rem/1.15 var(--f-head);margin:0 0 .15rem}
+.card .sub{font-size:var(--t-small);color:var(--ink2);margin-bottom:.7rem}
+.tag{display:inline-block;font-size:var(--t-label);font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .55rem;border-radius:2px;background:var(--gold);color:var(--on-gold)}
+.cols2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(18px,3vw,44px);align-items:start}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,28px)}
+svg text{font-family:var(--f-body)}
+.dia{width:100%;max-width:560px;margin:0 auto}
+.dia svg{display:block;width:100%;height:auto}
+
+/* slide 1 */
+.hero{font:800 clamp(2rem,3.4vw + .8vh,3.4rem)/1.05 var(--f-head);letter-spacing:-.02em;margin:.6rem 0 1rem;text-wrap:pretty}
+.hero .neg{color:var(--ink3)}
+.words{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.35rem 1rem;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--line)}
+.words dt{font-weight:600}
+.words dd{margin:0;color:var(--ink2);font-size:var(--t-small);padding-top:.1rem}
+.ring{fill:none;stroke:var(--line);stroke-width:1.4}
+.ring.dash{stroke-dasharray:4 6}
+.dotc{fill:var(--gold)}
+.dlab{font-size:14px;font-weight:600;fill:var(--ink)}
+.dcap{font-size:11px;font-weight:600;letter-spacing:.12em;fill:var(--ink3)}
+
+/* slide 2 */
+.parts{display:flex;flex-direction:column}
+.part{border-top:1px solid var(--line);padding:.55rem 0}
+.part:last-child{border-bottom:1px solid var(--line)}
+.part>b{display:block}
+.part .when{font-size:var(--t-small);color:var(--gold-ink);font-weight:600}
+.part p{font-size:var(--t-small);color:var(--ink2);margin-top:.15rem}
+.part.hi{background:var(--gold-soft);padding-left:.8rem;padding-right:.8rem;margin:0 -.8rem;border-radius:3px}
+
+/* slide 3 */
+.roles{display:flex;flex-direction:column}
+.role{display:grid;grid-template-columns:4.2rem minmax(0,1fr);gap:1rem;align-items:baseline;padding:.6rem 0;border-top:1px solid var(--line);cursor:default;transition:opacity .2s}
+.role:last-child{border-bottom:1px solid var(--line)}
+.role .n{font:800 2.1rem/1 var(--f-head);color:var(--ink)}
+.role .n sup{font-size:.9rem;vertical-align:top;position:relative;top:.2rem}
+.role b{display:block}
+.role span.d{font-size:var(--t-small);color:var(--ink2)}
+.roles[data-hl] .role{opacity:.35}
+.roles[data-hl="dir"] .role[data-g="dir"],.roles[data-hl="ceo"] .role[data-g="ceo"],.roles[data-hl="mgr"] .role[data-g="mgr"],.roles[data-hl="bd"] .role[data-g="bd"],.roles[data-hl="prof"] .role[data-g="prof"]{opacity:1}
+.role.big .n{color:var(--gold-text)}
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:clamp(4px,.7vw,9px);max-width:420px;margin:0}
+.waffle i{aspect-ratio:1;border-radius:50%;background:var(--ink3);opacity:.9;transition:opacity .2s,background .2s}
+.waffle i[data-g=dir]{background:var(--gold)}
+.waffle i[data-g=ceo]{background:var(--c-infra)}
+.waffle i[data-g=mgr]{background:var(--c-fin)}
+.waffle i[data-g=bd]{background:var(--c-tech)}
+.waffle i[data-g=prof]{background:var(--c-prof)}
+.waffle i[data-g=rest]{background:transparent;border:1.5px solid var(--line);opacity:1}
+.waffle[data-hl] i:not([data-g=rest]){opacity:.18}
+.waffle[data-hl=dir] i[data-g=dir],.waffle[data-hl=ceo] i[data-g=ceo],.waffle[data-hl=mgr] i[data-g=mgr],.waffle[data-hl=bd] i[data-g=bd],.waffle[data-hl=prof] i[data-g=prof]{opacity:1}
+.waffle-cap{margin-top:.7rem}
+
+/* slide 4 */
+.node{cursor:pointer;outline:none}
+.node circle.c{fill:color-mix(in srgb,var(--c) 15%,var(--bg));stroke:var(--c);stroke-width:2;transition:.2s}
+.node text{fill:var(--ink);font-size:13px;font-weight:600;text-anchor:middle;pointer-events:none}
+.node .halo{fill:none;stroke:var(--c);stroke-width:1.5;opacity:0}
+.node:hover circle.c{stroke-width:3}
+.node.sel circle.c{fill:var(--c)}
+.node.sel text{fill:var(--on-c)}
+.node.sel .halo{opacity:1}
+.node.en circle.c{fill:var(--gold);stroke:var(--gold)}
+.node.en text{fill:var(--on-gold);font-size:15px;font-weight:700}
+.spoke{stroke:var(--line);stroke-width:1.4;fill:none}
+.spoke.d{stroke-dasharray:3 6}
+.eco-h{display:flex;align-items:center;gap:.6rem}
+.eco-h i{width:.8rem;height:.8rem;border-radius:50%;background:var(--c);flex:none}
+
+/* slide 5 */
+.phases{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:clamp(12px,2vw,24px)}
+.phase{border-top:4px solid var(--line);padding-top:.8rem;display:flex;flex-direction:column;gap:.6rem}
+.phase.cur{border:2px solid var(--gold);border-top-width:6px;border-radius:4px;padding:.8rem 1rem 1rem}
+.phase .small{min-height:3em}
+.phase:not(.cur){padding:calc(.8rem + 2px) 0 calc(1rem + 2px)}
+.phase h3{font:800 1.25rem/1.15 var(--f-head);margin:0}
+.phase .when{font-size:var(--t-label);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.phase.cur .when{color:var(--gold-ink)}
+.phase .k,.terr .k{font-size:var(--t-label);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:.2rem}
+
+/* slide 6 */
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:3px;width:max-content;max-width:100%}
+.seg button{appearance:none;background:transparent;border:0;padding:.45rem .95rem;font-size:var(--t-small);font-weight:500;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.prob{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(16px,3vw,40px);align-items:start}
+.p-box{border:2px solid var(--ink);border-radius:4px;padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.p-box p.big{font:700 1.25rem/1.2 var(--f-head)}
+.p-box p b{color:var(--gold-text);font-weight:800}
+.p-right{display:flex;flex-direction:column;gap:1rem}
+.line{position:relative;aspect-ratio:600/120}
+.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ln-off,.ln-on{fill:none;stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.ln-off{stroke:var(--ink3);stroke-dasharray:2 9}
+.ln-on{stroke:var(--gold);stroke-width:5}
+.wp{fill:var(--bg);stroke:var(--ink);stroke-width:2}
+.prob[data-on="0"] .ln-on,.prob[data-on="0"] .wp{display:none}
+.prob[data-on="1"] .ln-off{display:none}
+.needs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.need{border-top:1px solid var(--line);padding-top:.5rem;transition:opacity .25s}
+.need b{display:block;font:800 1.0625rem var(--f-head)}
+.need span{font-size:var(--t-small);color:var(--ink2)}
+.prob[data-on="0"] .need{opacity:.4}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-size:var(--t-label);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:left;padding:.4rem .6rem .5rem 0;border-bottom:2px solid var(--ink)}
+.tbl td{padding:.5rem .8rem .5rem 0;border-bottom:1px solid var(--line);vertical-align:top;font-size:var(--t-small)}
+.tbl td:first-child{font-weight:600;font-size:var(--t-body);white-space:nowrap}
+.tbl .mk{text-align:center;width:6rem}
+.tbl th.mk{text-align:center}
+.dot{display:inline-block;width:.85rem;height:.85rem;border-radius:50%;background:var(--gold);vertical-align:middle}
+.dot.o{background:transparent;border:1.5px solid var(--line)}
+.tbl tr.hit td{background:var(--gold-soft)}
+.tbl tr.dim td{opacity:.45}
+.tbl .chips li{font-size:var(--t-label);padding:.1rem .5rem}
+
+/* slide 9 */
+.terr{border-top:4px solid var(--ink);padding-top:.8rem;display:flex;flex-direction:column;gap:.7rem}
+.terr.t3{border-top-color:var(--gold)}
+.terr h3{font:800 1.5rem/1.1 var(--f-head);margin:0}
+.terr .s{font-size:var(--t-small);font-weight:600;color:var(--gold-ink)}
+.terr .say{font-weight:600}
+.terr .say::before{content:"“"}.terr .say::after{content:"”"}
+
+/* slide 10 */
+.tiers{display:flex;flex-direction:column;gap:1rem}
+.tier .k{font-size:var(--t-label);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.4rem}
+.tier .k b{color:var(--ink)}
+.tier.core .pick{border-color:var(--ink);font-weight:600}
+.tier.sel3 .pick{border-style:dashed}
+
+/* slide 12 */
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.8rem}
+.fh{background:var(--line2);margin:0 0 .8rem;padding:.7rem 1rem;border-radius:3px}
+.fl:nth-child(4) .fh{background:var(--block);color:var(--on-block)}
+.fl:nth-child(4) .fh .lab{color:var(--gold)}
+.fh b{display:block;font:800 1.0625rem var(--f-head)}
+.fl ul{list-style:none;margin:0;padding:0 .3rem;display:flex;flex-direction:column;gap:.35rem;font-size:var(--t-body)}
+
+/* slide 13 */
+.appr{list-style:none;margin:0;padding:0}
+.appr li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.4rem;align-items:baseline;border-top:1px solid var(--line);padding:.6rem 0}
+.appr li:last-child{border-bottom:1px solid var(--line)}
+.appr .no{font-weight:700;color:var(--gold-ink);font-size:var(--t-small)}
+.rec{font:700 clamp(1.25rem,1.6vw + .5vh,1.75rem)/1.25 var(--f-head);margin-top:.9rem}
+.rec b{color:var(--gold-text);font-weight:800}
+.tri{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
+
+/* drawer */
+.drawer{position:absolute;inset:0;z-index:8;background:var(--bg);overflow:auto;padding:clamp(16px,4vh,40px) var(--gut)}
+.drawer h2{max-width:1100px;margin:0 auto .3rem;font:800 1.5rem/1.1 var(--f-head)}
+.drawer .sub{max-width:1100px;margin:0 auto 1rem;color:var(--ink2);font-size:var(--t-small)}
+.drawer ul{max-width:1100px;margin:0 auto;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:0 2.4rem}
+.drawer li{border-top:1px solid var(--line);padding:.6rem 0;display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.8rem;font-size:var(--t-small)}
+.drawer li b{font-size:var(--t-body)}
+.drawer li span{color:var(--ink2)}
+.drawer button.go{appearance:none;background:none;border:0;width:100%;text-align:left;cursor:pointer;display:grid;grid-template-columns:2.6rem 1fr;padding:.7rem 0;font-weight:600;font-size:var(--t-body)}
+.drawer button.go span{color:var(--gold-ink);font-size:var(--t-small);padding-top:.1rem}
+.drawer button.go:hover{background:var(--line2)}
+.drawer button.go[aria-current=true]{color:var(--gold-ink)}
+.drawer li.nav{display:block;padding:0}
+
+/* narrow / short */
+@media (max-width:760px){
+  .wrap{flex:none}
+  .cols2,.cols3,.prob,.phases{grid-template-columns:minmax(0,1fr)}
+  .flow{grid-template-columns:minmax(0,1fr)}
+  .volt{grid-template-columns:minmax(0,1fr)}
+  .now{display:none}
+  .dl{grid-template-columns:minmax(0,1fr);gap:.1rem}
+  .dl dt{padding-top:.5rem}
+  .tbl td:first-child{white-space:normal}
+  .tblwrap{overflow-x:auto}
+  .tbl.wide{min-width:600px}
+  .drawer li{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){.ctl .btn.txt{padding:0 .45rem}.brand{font-size:var(--t-small)}.ctl{gap:.2rem}}
+@media (prefers-reduced-motion:reduce){.slide.on{animation:none}.prog{transition:none}}
+</style>
+
+<header class="bar">
+  <div class="brand">VOLT<i>.</i>AFRICA</div>
+  <div class="now" id="now"></div>
+  <nav class="ctl" aria-label="Slide controls">
+    <button class="btn txt" id="gl" aria-expanded="false">Glossary</button>
+    <button class="btn txt" id="idx" aria-expanded="false">Index</button>
+    <button class="btn" id="prev" aria-label="Previous slide"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg></button>
+    <span id="ctr">01 / 13</span>
+    <button class="btn" id="next" aria-label="Next slide"><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg></button>
+    <button class="btn" id="theme" aria-label="Switch light or dark theme"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11"/></svg></button>
+  </nav>
+  <div class="prog" id="prog"></div>
+</header>
+
+<main class="deck" id="deck">
+
+<!-- 01 -->
+<section class="slide on" id="s1" data-title="The opportunity">
+ <div class="wrap">
+  <div class="main">
+   <div class="cols2" style="align-items:center;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)">
+    <div>
+     <p class="lab"><b>Africa Energy Indaba 2027</b>2–4 March 2027 · CTICC, Cape Town</p>
+     <h1 class="hero"><span class="neg">Not an event advertising package.</span> A <mark>business audience</mark> opportunity.</h1>
+     <p class="lead">A concentrated moment around one of Africa's most commercially important business ecosystems. The event brings together the organisations and decision-makers involved in Africa's energy future: energy, infrastructure, investment, technology, government and professional services.</p>
+    </div>
+    <div class="dia"><svg id="rings1" viewBox="0 0 640 540" role="img" aria-label="The event at the centre with six sectors around it"></svg></div>
+   </div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><div>
+   <p>We are <b>not selling stand space or sponsoring the event</b>. We are selling clients access to the businesses paying attention to energy in March 2027, through Volt titles and platforms.</p>
+   <p>So call businesses <b>around</b> the event, not only the ones exhibiting at it.</p></div></div>
+ </div>
+</section>
+
+<!-- 02 -->
+<section class="slide" id="s2" data-title="Why this event matters">
+ <div class="wrap">
+  <div class="main">
+   <div class="cols2">
+    <div>
+     <p class="lab" style="margin-bottom:.5rem">Specialist events: pick one</p>
+     <div class="picks" id="picks2" style="margin-bottom:.9rem"></div>
+     <div class="card" id="d2" aria-live="polite"></div>
+     <p class="note" style="margin-top:.7rem">“Who's in the room” is our reading of each forum's topic, not organiser data. Also on the programme: Women in Energy Forum.</p>
+    </div>
+    <div><header style="margin-bottom:.8rem"><p class="lab"><b>02</b>Why this event matters</p>
+   <h2 class="title">This is bigger than energy</h2>
+   <p class="lead" style="max-width:none">The event says it is where CEOs, ministers, investors, energy companies, technology providers and experts meet to discuss policy, investment, projects and the future of energy in Africa. It has four parts:</p></header>
+<div class="parts">
+     <div class="part"><span class="when">2–3 March</span><b>Main conference</b><p>The main programme of talks and panels with senior speakers.</p></div>
+     <div class="part"><span class="when">2–4 March</span><b>Exhibition</b><p>Companies showing their products and services on stands.</p></div>
+     <div class="part hi"><span class="when">Mostly 4 March</span><b>Specialist events</b><p>Smaller forums on one topic each. Each draws different businesses, so each is a different sales conversation. Pick one on the left.</p></div>
+     <div class="part"><span class="when">Across the event</span><b>Business networking</b><p><b>B2B Connect</b> is the organiser's business-meeting programme (B2B = business to business). <b>Hosted buyers</b> are buyers the organiser invites to meet suppliers.</p></div>
+    </div></div>
+   </div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p>Each forum is a <b>different client conversation</b>. Match the client to the forum: a cable maker cares about T&amp;D, a solar installer about Solar Africa, a bank about the Investment Forum. Then <b>open with that forum's conversation</b>, not with our titles.</p></div>
+  <p class="foot">Source: Africa Energy Indaba official 2027 website.</p>
+ </div>
+</section>
+
+<!-- 03 -->
+<section class="slide" id="s3" data-title="The audience">
+ <div class="wrap">
+  <header><p class="lab"><b>03</b>The audience</p>
+   <h2 class="title">The value is in who is in the room</h2>
+   <p class="lead">The organiser's published conference audience profile. Hover or tap a role to see it in the dots.</p></header>
+  <div class="main">
+   <div class="cols2">
+    <div class="roles" id="roles">
+     <div class="role big" data-g="dir"><span class="n">38<sup>%</sup></span><div><b>Director / Partner / Owner</b><span class="d">People who run or own the business.</span></div></div>
+     <div class="role" data-g="ceo"><span class="n">13<sup>%</sup></span><div><b>CEO / Managing Director</b><span class="d">The top executive. CEO = Chief Executive Officer; MD = Managing Director.</span></div></div>
+     <div class="role" data-g="mgr"><span class="n">10<sup>%</sup></span><div><b>Manager / Senior Manager</b><span class="d">People who manage teams and projects.</span></div></div>
+     <div class="role" data-g="bd"><span class="n">7<sup>%</sup></span><div><b>Business Development</b><span class="d">People whose job is winning new clients and partners.</span></div></div>
+     <div class="role" data-g="prof"><span class="n">7<sup>%</sup></span><div><b>Professional / Analyst / Consultant</b><span class="d">Specialists who advise or research.</span></div></div>
+    </div>
+    <div><div class="waffle" id="waffle" role="img" aria-label="One hundred dots showing the published audience profile"></div>
+     <p class="note waffle-cap">1 dot = 1 percentage point. Outlined dots are other roles.</p></div>
+   </div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><div>
+   <p>This is a <b>business audience of decision-makers</b>, not a mass-consumer crowd. Move the client from “reach people interested in energy” to “reach businesses and decision-makers in the energy and infrastructure economy.”</p>
+   <p>Careful: these are <b>event attendees, not Volt readers</b>. Never quote them as our reach.</p></div></div>
+  <p class="foot">Organiser-published figures from the Africa Energy Indaba conference audience profile. Event attendance is not Volt reach.</p>
+ </div>
+</section>
+
+<!-- 04 -->
+<section class="slide" id="s4" data-title="The commercial ecosystem">
+ <div class="wrap">
+  <header><p class="lab"><b>04</b>The commercial ecosystem</p>
+   <h2 class="title">Who actually has something to sell?</h2>
+   <p class="lead">The opportunity spreads across six connected industries. Tap one to see who is in it and what they typically want.</p></header>
+  <div class="main">
+   <div class="cols2" style="align-items:center">
+    <div class="dia"><svg id="eco" viewBox="0 0 700 600" role="group" aria-label="Six connected industries with energy at the centre"></svg></div>
+    <div class="card" id="p4" aria-live="polite"></div>
+   </div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p>Your prospect list is <b>six industries, not one</b>. If a company builds, funds, advises, supplies or regulates the energy sector, it has a reason to be seen. <b>Energy is the conversation. Business is the opportunity.</b></p></div>
+ </div>
+</section>
+
+<!-- 05 -->
+<section class="slide" id="s5" data-title="The market moment">
+ <div class="wrap">
+  <header><p class="lab"><b>05</b>The market moment</p>
+   <h2 class="title">Why March 2027?</h2>
+   <p class="lead">The Indaba creates a defined period when the energy ecosystem is actively discussing:</p></header>
+  <div class="main">
+   <ul class="chips" id="topics"></ul>
+   <div class="phases">
+    <div class="phase"><span class="when">Before</span><h3>Businesses prepare for the conversation</h3>
+     <p class="k">What the client needs</p><p class="small">To be noticed early, so people already know them when they arrive.</p>
+     <p class="k">What we can offer</p><ul class="chips" data-c="Audience targeting|Digital|Print|Social"></ul></div>
+    <div class="phase cur"><span class="when">During · 2–4 March 2027</span><h3>The industry is gathered and attention is concentrated</h3>
+     <p class="k">What the client needs</p><p class="small">To be part of the conversation while everyone is paying attention.</p>
+     <p class="k">What we can offer</p><ul class="chips" data-c="Digital|Print|Social|Content|Premium visibility"></ul></div>
+    <div class="phase"><span class="when">After</span><h3>Brands need to extend the conversation and stay visible</h3>
+     <p class="k">What the client needs</p><p class="small">To be remembered once the event is over and the follow-up begins.</p>
+     <p class="k">What we can offer</p><ul class="chips" data-c="Digital|Social|Content|Paid amplification"></ul></div>
+   </div>
+   <p class="small">The programme also spans specialist platforms, including T&amp;D Africa, Solar Africa, the IPP &amp; PPA Conference, Africa Gas Forum, Africa Oil Forum and the South African Investment Forum. Slide 2 explains what they mean.</p>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p><b>Three moments, three conversations.</b> Before: “get noticed.” During: “be part of it.” After: “stay remembered.” Start conversations early so a campaign can begin <b>before</b> the event, not on the day.</p></div>
+  <p class="foot">Source: Africa Energy Indaba official 2027 website.</p>
+ </div>
+</section>
+
+<!-- 06 -->
+<section class="slide" id="s6" data-title="The client problem">
+ <div class="wrap">
+  <header><p class="lab"><b>06</b>The client problem</p>
+   <h2 class="title">Being at the event is not the same as owning the moment</h2></header>
+  <div class="main">
+   <div class="seg" role="group" aria-label="Show the situation"><button data-v="0" aria-pressed="true">The event alone</button><button data-v="1" aria-pressed="false">Add the media journey</button></div>
+   <div class="prob" id="prob" data-on="0">
+    <div class="p-box">
+     <p class="lab">At the event</p>
+     <p class="big">An exhibitor can have a <b>stand</b>.</p>
+     <p class="big">A sponsor can have <b>branding</b>.</p>
+     <p class="big">A delegate can <b>attend</b>.</p>
+     <p class="small">None of that creates visibility beyond the venue.</p>
+    </div>
+    <div class="p-right">
+     <div class="line"><svg viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true">
+       <path class="ln-off" d="M0,60 L150,60"/>
+       <path class="ln-on" d="M0,60 C60,60 60,35 100,35 S170,90 300,85 S440,30 500,30 S580,48 600,48"/>
+       <circle class="wp" cx="100" cy="35" r="9"/><circle class="wp" cx="300" cy="85" r="9"/><circle class="wp" cx="500" cy="30" r="9"/></svg></div>
+     <div class="needs">
+      <div class="need"><b>Be seen</b><span>Build awareness before and during the event.</span></div>
+      <div class="need"><b>Be relevant</b><span>Show their expertise, solutions and point of view.</span></div>
+      <div class="need"><b>Be remembered</b><span>Stay present beyond the physical event.</span></div>
+     </div>
+    </div>
+   </div>
+   <p class="lead" style="margin:0"><mark style="font-weight:600">The Indaba creates the moment.</mark> Volt can create the media journey around the moment.</p>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><div>
+   <p>Lead with the client's problem, not our products. Ask: <b>“What happens to your Indaba investment after 4 March?”</b></p>
+   <p>Most clients will have a stand or a ticket and no plan for the weeks around it. That gap is our opening.</p></div></div>
+ </div>
+</section>
+
+<!-- 07 -->
+<section class="slide" id="s7" data-title="The Volt opportunity">
+ <div class="wrap">
+  <header><p class="lab"><b>07</b>The Volt opportunity</p>
+   <h2 class="title">From event presence to audience presence</h2>
+   <p class="lead">We can extend a client's Indaba investment across Volt's media ecosystem. This shows where each channel can carry the journey.</p></header>
+  <div class="main">
+   <div class="tblwrap"><table class="tbl wide">
+    <thead><tr><th>Channel</th><th>What it does for the client</th><th class="mk">Before</th><th class="mk">During</th><th class="mk">After</th></tr></thead>
+    <tbody id="lanes"></tbody></table></div>
+   <p class="lead" style="margin:0"><mark style="font-weight:600">One business moment. Multiple audience environments. One connected campaign.</mark></p>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p>Sell <b>one campaign across several channels</b>, not a single advert. Start from the client's objective and use the table to show how the same message can run before, during and after the event.</p></div>
+ </div>
+</section>
+
+<!-- 08 -->
+<section class="slide" id="s8" data-title="The cross-title role">
+ <div class="wrap">
+  <header><p class="lab"><b>08</b>The cross-title role</p>
+   <h2 class="title">Not every audience needs the same title</h2>
+   <p class="lead" style="max-width:none;font-size:var(--t-body)">Build the opportunity where the audience is relevant, not across every title. “Cross-title” means using more than one Volt title in one campaign.</p></header>
+  <div class="main">
+   <div><p class="lab" style="margin-bottom:.5rem">My client sells to, or is in: pick one</p><div class="picks" id="picks8"></div></div>
+   <div class="tblwrap"><table class="tbl wide">
+    <thead><tr><th>Title group</th><th>Its role</th><th>Best for</th><th>Who sells it</th></tr></thead>
+    <tbody id="titles"></tbody></table></div>
+   <p class="small"><b>Public-sector clients</b> (Government, state-owned enterprises): involve the Government team, which sells print into the public sector.</p>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p><b>Cross-title does not mean every title.</b> It means audience-led title selection. Pick the client's audience, use the table to choose titles, then bring in the right sales team so nobody sells over each other.</p></div>
+ </div>
+</section>
+
+<!-- 09 -->
+<section class="slide" id="s9" data-title="The commercial proposition">
+ <div class="wrap">
+  <header><p class="lab"><b>09</b>The commercial proposition</p>
+   <h2 class="title">Three ways a brand can show up</h2>
+   <p class="lead">Start with the client's objective, not an advertising format. A “territory” is a way to frame that objective.</p></header>
+  <div class="main">
+   <div class="cols3">
+    <div class="terr"><p class="lab">Territory 1</p><h3>Visibility</h3><p class="s">Be seen</p>
+     <div><p class="k">For</p><p class="small">Brands that want awareness around the Indaba and the energy conversation.</p></div>
+     <div><p class="k">The client says</p><p class="say small">We want people to know we are here.</p></div>
+     <div><p class="k">Potential channels</p><ul class="chips" data-c="Print|Display|Social|Premium digital"></ul></div></div>
+    <div class="terr"><p class="lab">Territory 2</p><h3>Authority</h3><p class="s">Be heard</p>
+     <div><p class="k">For</p><p class="small">Brands that want to show expertise, solutions and industry knowledge.</p></div>
+     <div><p class="k">The client says</p><p class="say small">We want to be seen as the experts.</p></div>
+     <div><p class="k">Potential channels</p><ul class="chips" data-c="Content|Digital|Print|Social|Paid amplification"></ul></div></div>
+    <div class="terr t3"><p class="lab">Territory 3</p><h3>Leadership</h3><p class="s">Own the moment</p>
+     <div><p class="k">For</p><p class="small">Major brands that want a sustained presence across the whole event cycle.</p></div>
+     <div><p class="k">The client says</p><p class="say small">We want to be the voice of this moment.</p></div>
+     <div><p class="k">Potential channels</p><ul class="chips" data-c="Cross-title|Premium digital|Content|Social|Paid media|Print"></ul></div></div>
+   </div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p>Ask <b>“What do you want from March?”</b> and match the answer to a territory. <b>These are not packages or prices.</b> They are how you frame the first conversation. Sellable packages come in the Sales Deck (Step 2).</p></div>
+ </div>
+</section>
+
+<!-- 10 -->
+<section class="slide" id="s10" data-title="Who we take to market">
+ <div class="wrap">
+  <header><p class="lab"><b>10</b>Who we take to market</p>
+   <h2 class="title">The prospect universe</h2>
+   <p class="lead">Go beyond the companies exhibiting at the Indaba. Tap a sector for who to call and what to say.</p></header>
+  <div class="main">
+   <div class="cols2">
+    <div class="tiers" id="tiers"></div>
+    <div class="card" id="p10" aria-live="polite"></div>
+   </div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p>Work <b>Core first</b> (most likely to buy), then <b>Adjacent</b> (close neighbours), and go <b>Selective</b> only when the fit is clear. <b>Target the ecosystem, not just the exhibitors.</b></p></div>
+ </div>
+</section>
+
+<!-- 11 -->
+<section class="slide" id="s11" data-title="Why Volt?">
+ <div class="wrap">
+  <header><p class="lab"><b>11</b>Why Volt?</p>
+   <h2 class="title">What we can bring to the table</h2>
+   <p class="lead">We are not simply selling inventory. We can combine six things. Here is how to say each one to a client.</p></header>
+  <div class="main">
+   <div class="tblwrap"><table class="tbl wide">
+    <thead><tr><th>Strength</th><th>What it means</th><th>How to say it</th></tr></thead>
+    <tbody>
+     <tr><td>Reach</td><td>Multiple titles and platforms</td><td>“We can put your message in front of several business audiences.”</td></tr>
+     <tr><td>Credibility</td><td>Established news and business environments</td><td>“Your story sits in trusted news and business titles.”</td></tr>
+     <tr><td>Storytelling</td><td>Partnered or native content capability</td><td>“We can help tell your story in your own voice.”</td></tr>
+     <tr><td>Amplification</td><td>Social and paid media</td><td>“We can extend it beyond our own pages.”</td></tr>
+     <tr><td>Flexibility</td><td>Print-first, digital-first or integrated campaigns</td><td>“We can start where your audience is: print, digital or both.”</td></tr>
+     <tr><td>Audience</td><td>Different environments for different commercial objectives</td><td>“Different titles for different goals, chosen with you.”</td></tr>
+    </tbody></table></div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p>The differentiator: <b>we move a client's message from one event into the wider media around it.</b> Use “how to say it” as a starting point in your own words, and only promise what the campaign can deliver.</p></div>
+ </div>
+</section>
+
+<!-- 12 -->
+<section class="slide" id="s12" data-title="The strategic model">
+ <div class="wrap">
+  <header><p class="lab"><b>12</b>The strategic model</p>
+   <h2 class="title">The Indaba becomes the trigger. The audience becomes <mark>the product.</mark></h2></header>
+  <div class="main">
+   <div class="flow">
+    <div class="fl"><div class="fh"><p class="lab">The reason to call</p><b>Event</b></div><ul><li>Africa Energy Indaba</li></ul></div>
+    <div class="fl"><div class="fh"><p class="lab">Who we reach</p><b>Audience</b></div><ul><li>Decision-makers</li><li>Businesses</li><li>Investors</li><li>Professionals</li><li>Industry stakeholders</li></ul></div>
+    <div class="fl"><div class="fh"><p class="lab">What the client wants</p><b>Commercial need</b></div><ul><li>Visibility</li><li>Credibility</li><li>Business development</li><li>Thought leadership</li><li>Brand positioning</li></ul></div>
+    <div class="fl"><div class="fh"><p class="lab">What we offer</p><b>Volt solution</b></div><ul><li>Print</li><li>Digital</li><li>Content</li><li>Social</li><li>Paid media</li><li>Cross-title reach</li></ul></div>
+    <div class="fl"><div class="fh"><p class="lab">What the client gets</p><b>Business outcome</b></div><ul><li>Awareness</li><li>Engagement</li><li>Consideration</li><li>Lead generation</li><li>Market presence</li></ul></div>
+   </div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><p>Read left to right as a sales conversation. <b>We are not selling “advertising around an event.”</b> We are selling access to a commercially valuable business audience at a moment of heightened industry attention.</p></div>
+ </div>
+</section>
+
+<!-- 13 -->
+<section class="slide" id="s13" data-title="The EXCO decision">
+ <div class="wrap">
+  <div class="main">
+   <div class="cols2" style="align-items:center">
+    <div>
+     <p class="lab"><b>13</b>The EXCO decision</p>
+     <h2 class="title" style="font-size:clamp(2rem,3.4vw + .6vh,3.2rem)">The recommendation</h2>
+     <p class="rec">Develop <b>Africa Energy Indaba 2027</b> as a cross-platform commercial opportunity within Volt's 2027 event and market calendar.</p>
+    </div>
+    <div>
+     <p class="lab" style="margin-bottom:.5rem">Approve the development of</p>
+     <ol class="appr">
+      <li><span class="no">01</span><span>A dedicated commercial strategy</span></li>
+      <li><span class="no">02</span><span>Audience-led prospecting across Energy, Infrastructure, Finance, Technology and Professional Services</span></li>
+      <li><span class="no">03</span><span>A flexible cross-platform sales proposition</span></li>
+      <li><span class="no">04</span><div>Three commercial territories<div class="tri"><span class="tag">Visibility</span><span class="tag">Authority</span><span class="tag">Leadership</span></div></div></li>
+      <li><span class="no">05</span><span>A sales deck translating the strategy into sellable packages</span></li>
+      <li><span class="no">06</span><span>A concise 1-pager for BDM prospecting (BDM = Business Development Manager)</span></li>
+     </ol>
+    </div>
+   </div>
+  </div>
+  <div class="volt"><span class="vl">What this means for us</span><div>
+   <p><b>What reps get next:</b> the Sales Deck with sellable packages, and a 1-pager to use when prospecting. Until then, use this strategy to choose who to call and what to open with.</p>
+   <p>Success is not event attendance. It is converting the <b>business ecosystem around the event into commercial demand for Volt.</b></p></div></div>
+ </div>
+</section>
+
+<aside class="drawer" id="drawer" hidden aria-label="Panel"></aside>
+</main>
+
+<script>
+(function(){
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var NS='http://www.w3.org/2000/svg';
+function el(t,a,p){var e=document.createElementNS(NS,t);if(a)for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function txt(p,x,y,s,cls,extra){var a={x:x,y:y};if(cls)a['class']=cls;if(extra)for(var k in extra)a[k]=extra[k];var t=el('text',a,p);t.textContent=s;return t}
+function H(t,a,kids){var e=document.createElement(t);if(a)for(var k in a){if(k==='class')e.className=a[k];else if(k==='text')e.textContent=a[k];else e.setAttribute(k,a[k])}(kids||[]).forEach(function(c){e.appendChild(typeof c==='string'?document.createTextNode(c):c)});return e}
+function chips(list){var u=H('ul',{'class':'chips'});list.forEach(function(s){u.appendChild(H('li',{text:s}))});return u}
+function onKey(n,fn){n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}})}
+function ready(n,l){n.setAttribute('tabindex','0');n.setAttribute('role','button');n.setAttribute('aria-label',l)}
+function dl(rows){var d=H('dl',{'class':'dl'});rows.forEach(function(r){var dd=H('dd',{'class':r[2]||''});if(typeof r[1]==='string')dd.textContent=r[1];else dd.appendChild(r[1]);d.appendChild(H('dt',{text:r[0]}));d.appendChild(dd)});return d}
+
+$$('ul[data-c]').forEach(function(u){u.className='chips';u.getAttribute('data-c').split('|').forEach(function(s){u.appendChild(H('li',{text:s}))})});
+
+/* 1 */
+(function(){
+  var s=$('#rings1'),cx=320,cy=250;
+  [55,105,155,205].forEach(function(r,i){el('circle',{cx:cx,cy:cy,r:r,'class':'ring'+(i===3?' dash':'')},s)});
+  ['Energy','Infrastructure','Investment','Technology','Government','Professional services'].forEach(function(n,i){
+    var a=(300+60*i)*Math.PI/180,x=cx+155*Math.cos(a),y=cy+155*Math.sin(a),start=Math.cos(a)>0;
+    el('line',{x1:cx,y1:cy,x2:x,y2:y,'class':'ring'},s);
+    el('circle',{cx:x,cy:y,r:6,'class':'dotc'},s);
+    txt(s,x+(start?14:-14),y+5,n,'dlab',{'text-anchor':start?'start':'end'});
+  });
+  el('circle',{cx:cx,cy:cy,r:46,fill:'var(--gold)'},s);
+  txt(s,cx,cy-2,'Africa Energy','',{'text-anchor':'middle','font-size':'12','font-weight':'600',fill:'var(--on-gold)'});
+  txt(s,cx,cy+15,'Indaba','',{'text-anchor':'middle','font-size':'15','font-weight':'700',fill:'var(--on-gold)'});
+  txt(s,cx,cy+232,'THE BUSINESS ECOSYSTEM AROUND THE EVENT','dcap',{'text-anchor':'middle'});
+})();
+
+/* 2 */
+(function(){
+  var F=[
+   {k:'Gas',n:'Africa Gas Forum',w:'4 March',m:'Natural gas as a fuel for power and industry: supply, pipelines and projects.',r:'Gas producers, suppliers, developers and the businesses that use gas.',c:'Marketing, communications or business-development leads at gas and energy-services companies.',o:'Authority: thought-leadership content and print credibility, timed around the forum.',q:'Gas is on the agenda in March. How are you making sure the right people hear your view?'},
+   {k:'Oil',n:'Africa Oil Forum',w:'3 March',m:'Oil exploration, production and supply across Africa.',r:'Oil producers, service companies, suppliers and investors.',c:'Marketing or business-development leads at oil and energy-services businesses.',o:'Authority and Visibility: content plus print and digital around the date.',q:'The oil conversation peaks on 3 March. What is your business saying, and who will hear it?'},
+   {k:'Solar',n:'Solar Africa',w:'2–4 March',m:'Solar power: panels, installations, storage and solar projects.',r:'Solar developers, installers, equipment suppliers and financiers.',c:'Marketing or business-development leads at solar and renewable companies, including growing local firms.',o:'Visibility: digital and social, and Community titles for local business reach.',q:'Solar Africa runs all three days. How will customers and partners find you while it is on?'},
+   {k:'EV',n:'EV Forum & Expo',w:'4 March',s:'EV = Electric Vehicle',m:'Electric vehicles and the charging and battery ecosystem around them.',r:'Vehicle makers, charging and battery companies, fleet operators and mobility investors.',c:'Marketing leads at automotive, mobility and charging brands.',o:'Visibility and Authority: Daily titles (automotive audience) plus digital.',q:'EVs are getting a stage on 4 March. How do you want to be part of that story?'},
+   {k:'T&D',n:'T&D Africa Conference',w:'4 March (expo 2–4 March)',s:'T&D = Transmission & Distribution',m:'The power lines, substations and equipment that carry electricity from where it is made to homes and businesses. In short, the grid.',r:'Utilities, grid engineers, cable, transformer and equipment makers, and contractors.',c:'Marketing or business-development leads at engineering, EPC and equipment companies.',o:'Authority: print credibility and content, with infrastructure audiences in Daily titles.',q:'Who needs to know your name before the next grid project is awarded?'},
+   {k:'IPP & PPA',n:'IPP & PPA Conference',w:'4 March',s:'IPP = Independent Power Producer · PPA = Power Purchase Agreement',m:'An IPP is a private company that builds and runs power plants and sells the electricity. A PPA is the long-term contract that says who buys that power and on what terms. Together: where private power deals get done.',r:'Power producers, project developers, lenders, lawyers, advisers and large power buyers.',c:'Business-development and marketing leads at IPPs, plus banks, law and advisory firms working on deals.',o:'Authority and Leadership: content, premium digital and cross-title presence.',q:'Deals are being discussed. How do the right investors and buyers see you first?'},
+   {k:'Nuclear',n:'Nuclear Forum',w:'4 March',m:'Nuclear power as a long-term energy option: policy, projects and the supply chain.',r:'Government and utility decision-makers, engineering and specialist suppliers, and investors.',c:'Marketing or communications leads at engineering, technical and advisory businesses. Involve the Government team for public-sector prospects.',o:'Authority: content in considered, senior-audience environments.',q:'Nuclear is a long-horizon topic. Who do you need to be in front of now?'},
+   {k:'Investment',n:'South African Investment Forum',w:'4 March',m:'Where investors, funds and project owners meet to discuss where money goes.',r:'Investors, banks, funds, project sponsors and advisers.',c:'Marketing or communications leads at banks, funds, insurers and advisory firms.',o:'Authority and Leadership: IOL national business audience plus Daily titles.',q:'Capital is in the room on 4 March. How do you want investors to see you?'}
+  ];
+  var pk=$('#picks2'),d=$('#d2'),bs=[];
+  function show(i){
+    var o=F[i];d.innerHTML='';
+    d.appendChild(H('h3',{text:o.n}));
+    d.appendChild(H('p',{'class':'sub',text:o.w+(o.s?' · '+o.s:'')}));
+    d.appendChild(dl([['What it means',o.m],['Who’s in the room',o.r],['Who to call',o.c],['What we offer',o.o],['Open with',o.q,'q']]));
+    bs.forEach(function(b,k){b.setAttribute('aria-pressed',k===i?'true':'false')});
+  }
+  F.forEach(function(o,i){var b=H('button',{'class':'pick','aria-pressed':'false',text:o.k});b.addEventListener('click',function(){show(i)});pk.appendChild(b);bs.push(b)});
+  show(4);
+})();
+
+/* 3 */
+(function(){
+  var w=$('#waffle'),r=$('#roles');
+  [['dir',38],['ceo',13],['mgr',10],['bd',7],['prof',7],['rest',25]].forEach(function(p){for(var i=0;i<p[1];i++){var d=document.createElement('i');d.setAttribute('data-g',p[0]);w.appendChild(d)}});
+  $$('.role',r).forEach(function(b){
+    var g=b.getAttribute('data-g');
+    function on(){r.setAttribute('data-hl',g);w.setAttribute('data-hl',g)}
+    function off(){r.removeAttribute('data-hl');w.removeAttribute('data-hl')}
+    b.addEventListener('mouseenter',on);b.addEventListener('mouseleave',off);b.addEventListener('click',on);
+  });
+})();
+
+/* 4 */
+(function(){
+  var s=$('#eco'),cx=350,cy=300,R=215;
+  var E=[
+   {k:'energy',n:'Energy & Power',l:['Energy','& Power'],c:'--c-energy',p:'Companies that make and sell power.',i:['Utilities (power companies)','IPPs (private power producers)','Renewables','Solar','Wind','Gas','Oil','Nuclear','Storage'],w:'Be seen as a leader and win partners, customers and talent.'},
+   {k:'fin',n:'Finance & Investment',l:['Finance &','Investment'],c:'--c-fin',p:'The money side: banks, funds and insurers.',i:['Banks','Investment firms','Infrastructure funds','DFIs (state-backed development lenders)','Insurance','Project finance'],w:'Look credible and be seen backing Africa’s energy projects.'},
+   {k:'corp',n:'Corporate & Government',l:['Corporate &','Government'],c:'--c-corp',p:'Public bodies and big businesses that set policy or use energy.',i:['SOEs (state-owned enterprises)','Government','Industry bodies','Major corporates','Economic-development organisations'],w:'Tell policy, investment and economic-development stories.'},
+   {k:'prof',n:'Professional Services',l:['Professional','Services'],c:'--c-prof',p:'Firms that sell expertise.',i:['Consulting','Legal','Advisory','Research','Engineering consultancy','Recruitment'],w:'Be known and trusted, because expertise is what they sell.'},
+   {k:'tech',n:'Technology & Business Solutions',l:['Technology &','Business Solutions'],c:'--c-tech',p:'Companies selling tools and systems to other businesses.',i:['Digital infrastructure','Software','Data','Smart-grid technology','EV','Business technology'],w:'Explain a new product to business buyers who do not know it yet.'},
+   {k:'infra',n:'Infrastructure & Engineering',l:['Infrastructure','& Engineering'],c:'--c-infra',p:'The firms that design, build and equip projects.',i:['EPC (engineering, procurement and construction contractors)','Engineering','Construction','Grid','T&D (transmission and distribution)','Equipment'],w:'Be known by the developers and owners who award projects.'}
+  ];
+  var pos=E.map(function(o,i){if(i===0)return [cx,cy];var a=(-90+72*(i-1))*Math.PI/180;return [cx+R*Math.cos(a),cy+R*Math.sin(a)]});
+  var nodes={};
+  for(var i=1;i<6;i++){var j=i===5?1:i+1;
+    el('line',{x1:pos[i][0],y1:pos[i][1],x2:pos[j][0],y2:pos[j][1],'class':'spoke d'},s);
+    el('line',{x1:pos[0][0],y1:pos[0][1],x2:pos[i][0],y2:pos[i][1],'class':'spoke'},s);}
+  function show(o){
+    var p=$('#p4');p.innerHTML='';p.style.setProperty('--c','var('+o.c+')');
+    p.appendChild(H('h3',{'class':'eco-h'},[H('i'),o.n]));
+    p.appendChild(H('p',{'class':'sub',text:o.p}));
+    p.appendChild(dl([['Who is in it',chips(o.i)],['What they want',o.w]]));
+    for(var k in nodes)nodes[k].classList.toggle('sel',k===o.k);
+  }
+  E.forEach(function(o,i){
+    var g=el('g',{'class':'node'+(i===0?' en':''),transform:'translate('+pos[i][0]+','+pos[i][1]+')'},s);
+    g.style.setProperty('--c','var('+o.c+')');
+    var r=i===0?82:64;
+    el('circle',{r:r+9,'class':'halo'},g);el('circle',{r:r,'class':'c'},g);
+    ready(g,o.n);
+    txt(g,0,-3,o.l[0]);txt(g,0,15,o.l[1]);
+    g.addEventListener('click',function(){show(o)});onKey(g,function(){show(o)});
+    nodes[o.k]=g;
+  });
+  show(E[1]);
+})();
+
+/* 5 */
+(function(){
+  var t=$('#topics');['Investment','Infrastructure','Energy security','Renewable energy','Grid development','Technology','Mobility','Oil & gas','Project development','Regulation','Industrial growth'].forEach(function(x){t.appendChild(H('li',{text:x}))});
+})();
+
+/* 6 */
+(function(){
+  var p=$('#prob'),bs=$$('.seg button',$('#s6'));
+  bs.forEach(function(b){b.addEventListener('click',function(){p.setAttribute('data-on',b.getAttribute('data-v'));bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})})});
+})();
+
+/* 7 */
+(function(){
+  var L=[
+   ['Audience targeting','Put your message in front of the right business audience',[1,0,0]],
+   ['Digital','Online reach across our digital platforms',[1,1,1]],
+   ['Print','Credibility in our newspapers',[1,1,0]],
+   ['Social','Conversation and reach on social platforms',[1,1,1]],
+   ['Content','Partnered or native stories that tell the client’s point of view',[0,1,1]],
+   ['Premium visibility','Prominent, high-impact placement around the event',[0,1,0]],
+   ['Paid amplification','Paid media (social, programmatic, Google Ads) to extend reach. Programmatic = automated online ad buying',[0,0,1]]
+  ];
+  var b=$('#lanes');
+  L.forEach(function(r){
+    var tr=H('tr',{},[H('td',{text:r[0]}),H('td',{text:r[1]})]);
+    r[2].forEach(function(on){tr.appendChild(H('td',{'class':'mk'},[H('span',{'class':'dot'+(on?'':' o'),'aria-label':on?'Yes':'No'})]))});
+    b.appendChild(tr);
+  });
+})();
+
+/* 8 */
+(function(){
+  var AUD=['Investment','National corporates','Professional services','Technology','Finance','Energy','Corporate','Automotive','Engineering','Infrastructure','Energy projects','Mining','Contractors','Local business'];
+  var T=[
+   {n:'IOL',r:'National digital business audience',m:['Finance','Investment','Energy','Technology','National corporates','Professional services'],s:'Digital team; Direct and INC teams can also sell into IOL'},
+   {n:'Daily titles',r:'Print credibility plus digital extension',m:['Corporate','Infrastructure','Energy','Finance','Engineering','Automotive'],s:'Direct team; INC for agency clients'},
+   {n:'Community titles',r:'Local business relevance',m:['Energy projects','Infrastructure','Mining','Engineering','Contractors','Local business'],s:'Direct team'},
+   {n:'Specialist / business titles',r:'Used where audience alignment exists, for example Fast Company for innovation and technology',m:[],s:'Check with your manager'}
+  ];
+  var pk=$('#picks8'),tb=$('#titles'),rows=[],bs=[],cur=null;
+  T.forEach(function(t){
+    var c=H('td');c.appendChild(t.m.length?chips(t.m):H('span',{'class':'small',text:'Case by case'}));
+    var tr=H('tr',{},[H('td',{text:t.n}),H('td',{text:t.r}),c,H('td',{text:t.s})]);tb.appendChild(tr);rows.push(tr);
+  });
+  AUD.forEach(function(a){var b=H('button',{'class':'pick','aria-pressed':'false',text:a});
+    b.addEventListener('click',function(){cur=cur===a?null:a;paint()});pk.appendChild(b);bs.push(b)});
+  function paint(){
+    bs.forEach(function(b,i){b.setAttribute('aria-pressed',AUD[i]===cur?'true':'false')});
+    rows.forEach(function(r,i){var hit=cur&&T[i].m.indexOf(cur)>-1;r.className=cur?(hit?'hit':'dim'):''});
+  }
+})();
+
+/* 10 */
+(function(){
+  var N=[
+   {n:'Energy & Power',t:1,i:'Utilities, IPPs (private power producers), renewable developers and energy suppliers.',c:'Marketing, communications and business-development heads.',w:'To be seen as a leader and win partners.',o:'Leadership or Authority: content plus cross-title presence.',q:'You are part of the Indaba conversation. What happens to your message after 4 March?'},
+   {n:'Infrastructure',t:1,i:'Engineering firms, EPC contractors (design-and-build), construction firms and T&D equipment makers.',c:'Marketing and business-development leads.',w:'To be known by the people who award projects.',o:'Authority: print credibility in Daily titles, content and digital.',q:'Who needs to know your name before the next project is awarded?'},
+   {n:'Finance',t:1,i:'Banks, investment firms, insurers and infrastructure-finance teams.',c:'Marketing and communications leads.',w:'To look credible and be seen backing energy projects.',o:'Authority or Leadership: content, premium digital and IOL.',q:'Investors and partners are watching energy in March. How do you want to be seen?'},
+   {n:'Technology',t:2,i:'Digital, data, smart-infrastructure and EV companies.',c:'Marketing leads and business-development heads.',w:'To explain a new product to business buyers.',o:'Visibility and Authority: social and digital, with content.',q:'Buyers are learning what is new. How do they hear about you?'},
+   {n:'Professional Services',t:2,i:'Legal, consulting, advisory and research firms.',c:'Marketing leads and partners.',w:'To be seen as the expert.',o:'Authority: content and thought leadership.',q:'Energy clients are looking for advisers. What do you want them to know about you?'},
+   {n:'Mining',t:3,i:'Energy-intensive businesses and companies investing in energy solutions.',c:'Marketing and communications leads, only where energy is clearly relevant.',w:'To show how they use or invest in energy.',o:'Community titles and digital, where local business relevance exists.',q:'Energy is a big part of your costs and plans. How are you talking about it?'},
+   {n:'Automotive',t:3,i:'The EV and mobility ecosystem.',c:'Marketing leads at EV, charging and mobility brands.',w:'To be part of the EV conversation.',o:'Daily titles and digital, tied to the EV Forum.',q:'EVs get a stage on 4 March. How do you want to be part of it?'},
+   {n:'Education / Skills',t:3,i:'Energy skills, training and workforce development.',c:'Marketing and partnership leads.',w:'To recruit students and industry partners.',o:'Visibility: selective digital and content.',q:'The industry needs skills. Who should know you train them?'},
+   {n:'Government / SOEs',t:3,i:'Bodies focused on infrastructure, investment and public-sector communication. SOE = state-owned enterprise.',c:'Communications leads. Involve the Government team.',w:'To communicate infrastructure and investment plans.',o:'Print into the public sector, plus digital.',q:'You have plans to communicate. Who needs to read them?'}
+  ];
+  var TN={1:['Core','most likely to buy'],2:['Adjacent','close neighbours'],3:['Selective','only where the fit is clear']};
+  var box=$('#tiers'),p=$('#p10'),bs=[];
+  [1,2,3].forEach(function(t){
+    var d=H('div',{'class':'tier'+(t===1?' core':'')},[H('p',{'class':'k'},[H('b',{text:TN[t][0]}),' · '+TN[t][1]])]);
+    var pk=H('div',{'class':'picks'});
+    N.forEach(function(o,i){if(o.t!==t)return;var b=H('button',{'class':'pick','aria-pressed':'false',text:o.n});b.addEventListener('click',function(){show(i)});pk.appendChild(b);bs[i]=b});
+    d.appendChild(pk);box.appendChild(d);
+  });
+  function show(i){
+    var o=N[i];p.innerHTML='';
+    p.appendChild(H('p',{},[H('span',{'class':'tag',text:TN[o.t][0]})]));
+    p.appendChild(H('h3',{text:o.n,style:'margin:.5rem 0 .7rem'}));
+    p.appendChild(dl([['Who they are',o.i],['Who to call',o.c],['What they want',o.w],['What we offer',o.o],['Open with',o.q,'q']]));
+    bs.forEach(function(b,k){b.setAttribute('aria-pressed',k===i?'true':'false')});
+  }
+  show(0);
+})();
+
+/* drawers + navigation */
+var slides=$$('.slide'),cur=0,dr=$('#drawer'),mode='';
+var GL=[
+ ['T&D','Transmission & Distribution: the power lines and substations that carry electricity to homes and businesses.'],
+ ['IPP','Independent Power Producer: a private company that builds and runs power plants and sells the electricity.'],
+ ['PPA','Power Purchase Agreement: the long-term contract that sets who buys power and on what terms.'],
+ ['EV','Electric vehicle.'],
+ ['EPC','Engineering, Procurement & Construction: contractors that design and build projects.'],
+ ['DFI','Development Finance Institution: a state-backed lender that funds development projects.'],
+ ['SOE','State-owned enterprise: a company owned by government.'],
+ ['B2B Connect','The organiser’s business-meeting programme.'],
+ ['Hosted buyers','Buyers the organiser invites to meet suppliers.'],
+ ['Territory','A way to frame a client’s goal: Visibility (be seen), Authority (be heard) or Leadership (own the moment).'],
+ ['Core / Adjacent / Selective','How we rank prospects: Core = most likely to buy; Adjacent = close neighbours; Selective = only where the fit is clear.'],
+ ['Organiser-published','A figure published by the Indaba organiser, not measured by Volt.']
+];
+function closeDrawer(){dr.hidden=true;mode='';$('#idx').setAttribute('aria-expanded','false');$('#gl').setAttribute('aria-expanded','false')}
+function openDrawer(m){
+  if(mode===m){closeDrawer();return}
+  closeDrawer();mode=m;dr.innerHTML='';
+  if(m==='gl'){
+    dr.appendChild(H('h2',{text:'Glossary'}));
+    dr.appendChild(H('p',{'class':'sub',text:'Every short name and acronym used in this deck, in plain English.'}));
+    var u=H('ul');GL.forEach(function(g){u.appendChild(H('li',{},[H('b',{text:g[0]}),H('span',{text:g[1]})]))});dr.appendChild(u);
+  }else{
+    dr.appendChild(H('h2',{text:'Index'}));dr.appendChild(H('p',{'class':'sub',text:'Jump to a slide.'}));
+    var u2=H('ul');slides.forEach(function(s,i){
+      var b=H('button',{'class':'go','aria-current':i===cur?'true':'false'},[H('span',{text:(i<9?'0':'')+(i+1)}),s.getAttribute('data-title')]);
+      b.addEventListener('click',function(){closeDrawer();go(i)});u2.appendChild(H('li',{'class':'nav'},[b]));
+    });dr.appendChild(u2);
+  }
+  dr.hidden=false;dr.scrollTop=0;
+  $(m==='gl'?'#gl':'#idx').setAttribute('aria-expanded','true');
+}
+$('#idx').addEventListener('click',function(){openDrawer('idx')});
+$('#gl').addEventListener('click',function(){openDrawer('gl')});
+function go(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach(function(s,k){s.classList.toggle('on',k===cur)});
+  slides[cur].scrollTop=0;
+  var n=cur+1;
+  $('#ctr').textContent=(n<10?'0':'')+n+' / '+slides.length;
+  $('#now').textContent=slides[cur].getAttribute('data-title');
+  $('#prog').style.width=(n/slides.length*100)+'%';
+  $('#prev').disabled=cur===0;$('#next').disabled=cur===slides.length-1;
+  try{history.replaceState(null,'','#s'+n)}catch(e){}
+}
+$('#prev').addEventListener('click',function(){go(cur-1)});
+$('#next').addEventListener('click',function(){go(cur+1)});
+document.addEventListener('keydown',function(e){
+  if(e.altKey||e.ctrlKey||e.metaKey)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();go(cur+1)}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1)}
+  else if(e.key==='Home'){go(0)}
+  else if(e.key==='End'){go(slides.length-1)}
+  else if(e.key==='Escape'){closeDrawer()}
+});
+var tx=0,ty=0;
+document.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+document.addEventListener('touchend',function(e){
+  var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.6)go(cur+(dx<0?1:-1));
+},{passive:true});
+$('#theme').addEventListener('click',function(){
+  var r=document.documentElement,dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  r.setAttribute('data-theme',dark?'light':'dark');
+});
+var m=/^#s(\d+)$/.exec(location.hash||'');
+go(m?parseInt(m[1],10)-1:0);
+})();
+</script>
+</html>
